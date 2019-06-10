@@ -51,7 +51,7 @@ cdef class axidma:
             self._free_buffer()
             raise Exception("Error: DMA read transaction failed.")
         else:
-            return self._buf_rx[:self._trans.output_size]
+            return self._buf_rx[:self._trans.output_size // 2]
 
     def _free_buffer(self):
         caxidma.axidma_free(self._axidma_dev, self._trans.output_buf, self._trans.output_size)
